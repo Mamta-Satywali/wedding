@@ -106,47 +106,6 @@
       background: var(--green);
     }
 
-    /* =========================
-       HERO SECTION HANGING TORAN
-    ========================== */
-    .hanging-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      pointer-events: none;
-      z-index: 10;
-      display: flex;
-      justify-content: space-around;
-      padding: 0 5px;
-      overflow: hidden;
-    }
-
-    .string-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: swing 3.5s ease-in-out infinite alternate;
-      transform-origin: top center;
-    }
-
-    .string-item:nth-child(even) {
-      animation-duration: 2.8s;
-      animation-delay: 0.4s;
-    }
-
-    .decor-node {
-      font-size: 14px;
-      margin-top: -3px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-    }
-
-    @keyframes swing {
-      0% { transform: rotate(-4deg); }
-      100% { transform: rotate(4deg); }
-    }
-
     /* FLOATING PETALS */
     .petals-container {
       position: fixed;
@@ -218,7 +177,7 @@
     }
 
     /* =========================
-       HERO SECTION (RESPONSIVE FIX)
+       HERO SECTION & HANGING BELLS
     ========================== */
     .hero {
       min-height: 100vh;
@@ -226,7 +185,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 80px 20px 40px;
+      padding: 110px 20px 40px;
       position: relative;
       background:
         radial-gradient(circle at top left, rgba(246, 226, 215, 0.8), transparent 45%),
@@ -244,11 +203,11 @@
       align-items: center;
     }
 
-    /* LIGHTNING THREADS WITH BELLS */
+    /* LIGHTNING THREADS WITH BELLS (RESPONSIVE & ALTERNATING) */
     .lightning-threads {
       width: 100%;
       max-width: 600px;
-      margin: 0 auto 15px auto;
+      margin: 0 auto 10px auto;
       display: flex;
       justify-content: space-around;
       align-items: flex-start;
@@ -267,30 +226,39 @@
     .light-thread:nth-child(even) { animation-duration: 3s; animation-delay: 0.3s; }
     .light-thread:nth-child(3n) { animation-duration: 2.2s; animation-delay: 0.7s; }
 
+    /* Alternate heights using responsive vh units */
     .light-thread:nth-child(1) .thread-line,
-    .light-thread:nth-child(7) .thread-line { height: 18px; }
+    .light-thread:nth-child(7) .thread-line { height: clamp(20px, 3.5vh, 40px); }
+    
     .light-thread:nth-child(2) .thread-line,
-    .light-thread:nth-child(6) .thread-line { height: 35px; }
+    .light-thread:nth-child(6) .thread-line { height: clamp(38px, 6.5vh, 75px); }
+    
     .light-thread:nth-child(3) .thread-line,
-    .light-thread:nth-child(5) .thread-line { height: 25px; }
-    .light-thread:nth-child(4) .thread-line { height: 42px; }
+    .light-thread:nth-child(5) .thread-line { height: clamp(28px, 4.8vh, 55px); }
+    
+    .light-thread:nth-child(4) .thread-line { height: clamp(48px, 8vh, 90px); }
 
     .thread-line {
       width: 1.5px;
-      background: linear-gradient(to bottom, transparent, var(--gold-glow), var(--gold));
+      background: linear-gradient(to bottom, rgba(184, 138, 59, 0.2), var(--gold-glow), var(--gold));
       box-shadow: 0 0 6px var(--gold-glow);
     }
 
     .thread-bell {
-      font-size: 14px;
+      font-size: clamp(12px, 2.5vw, 16px);
       margin-top: -2px;
       filter: drop-shadow(0 0 4px var(--gold-glow));
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(-3deg); }
+      100% { transform: rotate(3deg); }
     }
 
     .ganesha-wrapper {
       position: relative;
       display: inline-block;
-      margin-top: 10px;
+      margin-top: 5px;
       margin-bottom: 15px;
     }
 
@@ -493,20 +461,19 @@
       object-fit: contain; 
     }
 
-.story-text {
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(16px, 4.5vw, 22px); /* Dynamically shrinks text on small screens */
-  line-height: 1.6;
-  color: #3d2b1f;
-  font-weight: 600;
-  text-align: center;
-}
+    .story-text {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(16px, 4.5vw, 22px);
+      line-height: 1.6;
+      color: #3d2b1f;
+      font-weight: 600;
+      text-align: center;
+    }
 
-/* Ensure poem lines wrap cleanly without awkward word breaks */
-.story-text span {
-  display: inline-block;
-  white-space: nowrap;
-}
+    .story-text span {
+      display: inline-block;
+      white-space: nowrap;
+    }
 
     /* =========================
        CELEBRATIONS
@@ -543,13 +510,13 @@
 
     .event-name {
       font-family: "Playfair Display", serif;
-      font-size: 30px;
+      font-size: 26px;
       color: var(--maroon);
       margin-bottom: 8px;
     }
 
     .event-date {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--text);
       margin-bottom: 4px;
     }
@@ -557,7 +524,7 @@
     .event-time {
       color: var(--dark-gold);
       font-weight: 600;
-      font-size: 16px;
+      font-size: 14px;
     }
 
     /* =========================
@@ -789,7 +756,7 @@
     }
 
     /* =========================
-       MOBILE BREAKPOINTS (FIXED)
+       MOBILE BREAKPOINTS
     ========================== */
     @media (max-width: 800px) {
       .events-grid { grid-template-columns: 1fr; }
@@ -799,20 +766,20 @@
     }
 
     @media (max-width: 600px) {
-      nav { padding: 10px 5px; }
+      nav { padding: 8px 5px; }
       nav ul { 
-        gap: 14px; 
+        gap: 12px; 
         width: 100%; 
         justify-content: center; 
         flex-wrap: wrap; 
       }
-      nav a { font-size: 11px; white-space: nowrap; }
+      nav a { font-size: 10px; white-space: nowrap; }
 
       section { padding: 40px 5%; }
 
       .hero { 
         min-height: auto; 
-        padding-top: 75px; 
+        padding-top: 80px; 
         padding-bottom: 30px; 
       }
 
@@ -820,24 +787,22 @@
         max-width: 100%; 
         margin-bottom: 5px;
       }
-      
-      .thread-line { height: 16px !important; }
 
       .ganesha-wrapper { 
-        margin-top: 5px; 
-        margin-bottom: 10px; 
+        margin-top: 2px; 
+        margin-bottom: 8px; 
       }
 
       .ganesha-box {
-        width: 75px;
-        height: 75px;
+        width: 70px;
+        height: 70px;
       }
 
-      .ganesh-mantra { font-size: 15px; margin-bottom: 10px; }
-      .invitation-text { font-size: 11px; margin-bottom: 12px; }
-      .names { font-size: 42px; }
-      .and { font-size: 22px; }
-      .wedding-date { font-size: 17px; margin-top: 12px; }
+      .ganesh-mantra { font-size: 14px; margin-bottom: 8px; }
+      .invitation-text { font-size: 11px; margin-bottom: 10px; }
+      .names { font-size: 38px; }
+      .and { font-size: 20px; }
+      .wedding-date { font-size: 16px; margin-top: 10px; }
 
       .emoji-choices { grid-template-columns: 1fr; }
     }
@@ -887,15 +852,6 @@
 
 <!-- HERO SECTION -->
 <section class="hero" id="home">
-
-  <!-- HANGING TORANS -->
-  <div class="hanging-wrapper">
-    <div class="string-item"><div class="decor-node">🌼</div><div class="decor-node">🔔</div></div>
-    <div class="string-item"><div class="decor-node">🌸</div><div class="decor-node">🔔</div></div>
-    <div class="string-item"><div class="decor-node">🌼</div><div class="decor-node">🔔</div></div>
-    <div class="string-item"><div class="decor-node">🌸</div><div class="decor-node">🔔</div></div>
-    <div class="string-item"><div class="decor-node">🌼</div><div class="decor-node">🔔</div></div>
-  </div>
 
   <div class="hero-content">
     <!-- LIGHTNING THREADS WITH BELLS -->
@@ -967,14 +923,14 @@
       <img src="mamta_amit2.jpg" alt="Mamta and Amit Photo">
     </div>
 
-<div class="story-text-content">
-  <p class="story-text">
-    <span>Eight years of friendship, a bond so true,</span><br/>
-    <span>Two different cultures, a single view.</span><br/>
-    <span>Hand in hand, our new journey starts,</span><br/>
-    <span>Blessed by loved ones, two united hearts.</span>
-  </p>
-</div>
+    <div class="story-text-content">
+      <p class="story-text">
+        <span>Eight years of friendship, a bond so true,</span><br/>
+        <span>Two different cultures, a single view.</span><br/>
+        <span>Hand in hand, our new journey starts,</span><br/>
+        <span>Blessed by loved ones, two united hearts.</span>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -1042,7 +998,7 @@
   </div>
 </section>
 
-<!-- RSVP SECTION WITH GOOGLE FORMS INTEGRATION -->
+<!-- RSVP SECTION -->
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showConfirmation(); }"></iframe>
 
 <section class="rsvp" id="rsvp">
