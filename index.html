@@ -226,7 +226,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 70px 20px 40px;
+      padding: 50px 0px 10px;
       position: relative;
       background:
         radial-gradient(circle at top left, rgba(246, 226, 215, 0.8), transparent 45%),
@@ -1032,11 +1032,12 @@
       </div>
 
       <!-- ATTENDANCE RADIO BUTTONS -->
+      <!-- ATTENDANCE RADIO BUTTONS -->
       <div class="form-group">
         <label>Will you join us?</label>
         <div class="emoji-choices">
           <label class="emoji-card">
-            <input type="radio" name="attendance" value="Yes, I will be there!" required>
+            <input type="radio" name="attendance" value="Yes, I will be there!" onchange="toggleGuestField()" required>
             <div class="card-btn">
               <span style="font-size:24px;">😊</span>
               <span>Yes, I will be there!</span>
@@ -1044,7 +1045,7 @@
           </label>
 
           <label class="emoji-card">
-            <input type="radio" name="attendance" value="Sorry, I cannot attend.">
+            <input type="radio" name="attendance" value="Sorry, I cannot attend." onchange="toggleGuestField()">
             <div class="card-btn">
               <span style="font-size:24px;">😔</span>
               <span>Sorry, I cannot attend.</span>
@@ -1054,7 +1055,7 @@
       </div>
 
       <!-- NUMBER OF GUESTS FIELD -->
-      <div class="form-group">
+      <div class="form-group" id="guestCountGroup">
         <label for="guestCount">Number of Guests</label>
         <input type="text" id="guestCount" name="guestCount" class="form-control" placeholder="e.g. 2 adults, 1 child" required>
       </div>
@@ -1143,6 +1144,22 @@
     } else {
       audio.pause();
       audioBtn.innerHTML = "🎵";
+    }
+  }
+  
+  function toggleGuestField() {
+    const attendanceVal = document.querySelector('input[name="attendance"]:checked')?.value;
+    const guestGroup = document.getElementById("guestCountGroup");
+    const guestInput = document.getElementById("guestCount");
+
+    if (attendanceVal === "Sorry, I cannot attend.") {
+      guestGroup.style.display = "none";
+      guestInput.removeAttribute("required");
+      guestInput.value = "0"; // Sends '0' to your script instead of failing validation
+    } else {
+      guestGroup.style.display = "block";
+      guestInput.setAttribute("required", "required");
+      if (guestInput.value === "0") guestInput.value = "";
     }
   }
 </script>
