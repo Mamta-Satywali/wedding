@@ -248,40 +248,60 @@
       margin-bottom: 15px;
     }
 
-    .lightning-threads {
-      position: absolute;
-      top: -45px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 320px;
-      display: flex;
-      justify-content: space-between;
-      z-index: 3;
-    }
+   /* LIGHTNING THREADS WITH BELLS SPREAD ACROSS HEADER */
+.lightning-threads {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 10px auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  z-index: 3;
+  padding: 0 10px;
+}
 
-    .light-thread {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: swing 2.5s ease-in-out infinite alternate;
-      transform-origin: top center;
-    }
+.light-thread {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: swing 2.5s ease-in-out infinite alternate;
+  transform-origin: top center;
+}
 
-    .light-thread:nth-child(2) { animation-delay: 0.5s; }
+/* Stagger swinging animations for natural effect */
+.light-thread:nth-child(even) {
+  animation-duration: 3s;
+  animation-delay: 0.3s;
+}
 
-    .thread-line {
-      width: 1.5px;
-      height: 22px;
-      background: linear-gradient(to bottom, transparent, var(--gold-glow), var(--gold));
-      box-shadow: 0 0 6px var(--gold-glow);
-    }
+.light-thread:nth-child(3n) {
+  animation-duration: 2.2s;
+  animation-delay: 0.7s;
+}
 
-    .thread-bell {
-      font-size: 12px;
-      margin-top: -2px;
-      filter: drop-shadow(0 0 4px var(--gold-glow));
-    }
+/* Vary thread lengths for decorative look */
+.light-thread:nth-child(1) .thread-line,
+.light-thread:nth-child(7) .thread-line { height: 18px; }
+
+.light-thread:nth-child(2) .thread-line,
+.light-thread:nth-child(6) .thread-line { height: 35px; }
+
+.light-thread:nth-child(3) .thread-line,
+.light-thread:nth-child(5) .thread-line { height: 25px; }
+
+.light-thread:nth-child(4) .thread-line { height: 42px; }
+
+.thread-line {
+  width: 1.5px;
+  background: linear-gradient(to bottom, transparent, var(--gold-glow), var(--gold));
+  box-shadow: 0 0 6px var(--gold-glow);
+}
+
+.thread-bell {
+  font-size: 14px;
+  margin-top: -2px;
+  filter: drop-shadow(0 0 4px var(--gold-glow));
+}
 
     .ganesha-box {
       width: 90px;
@@ -844,21 +864,23 @@
     <div class="string-item"><div class="decor-node">🌼</div><div class="decor-node">🔔</div></div>
   </div>
 
-  <div class="hero-content">
-    <div class="ganesha-wrapper">
-      <div class="lightning-threads">
-        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-		        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-      </div>
-      <div class="ganesha-box">
-        <img src="ganesha.jpg" alt="Lord Ganesha" />
-      </div>
+<div class="hero-content">
+  <!-- LIGHTNING THREADS WITH BELLS SPREAD WIDE -->
+  <div class="lightning-threads">
+    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+  </div>
+
+  <div class="ganesha-wrapper">
+    <div class="ganesha-box">
+      <img src="ganesha.jpg" alt="Lord Ganesha" />
     </div>
+  </div>
 
     <div class="ganesh-mantra">ॐ श्री गणेशाय नमः</div>
 
