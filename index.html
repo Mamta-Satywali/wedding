@@ -139,7 +139,7 @@
     .petal:nth-child(5) { left: 90%; animation-duration: 10s; animation-delay: 3s; }
 
     /* =========================
-       NAVIGATION & FIXED HEADER BANNER
+       CLEAN FIXED NAVIGATION BAR
     ========================== */
     header {
       position: fixed;
@@ -180,64 +180,8 @@
       color: var(--maroon);
     }
 
-    /* DECORATIVE TOP TORAN & BELLS BELOW HEADER */
-    .header-toran {
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--maroon), var(--gold), var(--maroon));
-      position: relative;
-    }
-
-    .header-bells-container {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      pointer-events: none;
-      padding: 0 5%;
-    }
-
-    .bell-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transform-origin: top center;
-      animation: swing 2.5s ease-in-out infinite alternate;
-    }
-
-    .bell-wrapper:nth-child(even) { animation-duration: 3s; animation-delay: 0.3s; }
-    .bell-wrapper:nth-child(3n) { animation-duration: 2.2s; animation-delay: 0.6s; }
-
-    .bell-thread {
-      width: 1.5px;
-      background: linear-gradient(to bottom, var(--gold), var(--gold-glow));
-      box-shadow: 0 0 4px var(--gold-glow);
-    }
-
-    /* Fixed responsive thread heights relative to the navbar */
-    .bell-wrapper:nth-child(1) .bell-thread,
-    .bell-wrapper:nth-child(7) .bell-thread { height: 18px; }
-    .bell-wrapper:nth-child(2) .bell-thread,
-    .bell-wrapper:nth-child(6) .bell-thread { height: 35px; }
-    .bell-wrapper:nth-child(3) .bell-thread,
-    .bell-wrapper:nth-child(5) .bell-thread { height: 25px; }
-    .bell-wrapper:nth-child(4) .bell-thread { height: 42px; }
-
-    .bell-icon {
-      font-size: 13px;
-      margin-top: -2px;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-    }
-
-    @keyframes swing {
-      0% { transform: rotate(-4deg); }
-      100% { transform: rotate(4deg); }
-    }
-
     /* =========================
-       HERO SECTION
+       HERO SECTION WITH FLOWER BELL GARLANDS
     ========================== */
     .hero {
       min-height: 100vh;
@@ -251,6 +195,64 @@
         radial-gradient(circle at top left, rgba(246, 226, 215, 0.8), transparent 45%),
         radial-gradient(circle at bottom right, rgba(242, 228, 201, 0.8), transparent 45%),
         var(--cream);
+    }
+
+    /* TORAN & FLOWER BELL STRINGS (HERO ONLY) */
+    .hero-toran {
+      position: absolute;
+      top: 45px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--maroon), var(--gold), var(--maroon));
+      z-index: 10;
+    }
+
+    .hero-bells-container {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      pointer-events: none;
+      padding: 0 4%;
+    }
+
+    .bell-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform-origin: top center;
+      animation: swing 2.8s ease-in-out infinite alternate;
+    }
+
+    .bell-wrapper:nth-child(even) { animation-duration: 3.2s; animation-delay: 0.3s; }
+    .bell-wrapper:nth-child(3n) { animation-duration: 2.5s; animation-delay: 0.6s; }
+
+    /* FLOWER STRINGS REPLACING PLAIN THREADS */
+    .flower-string {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .flower-string .flower {
+      font-size: 10px;
+      line-height: 1;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+    }
+
+    .bell-icon {
+      font-size: 15px;
+      margin-top: 1px;
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(-5deg); }
+      100% { transform: rotate(5deg); }
     }
 
     .hero-content {
@@ -790,16 +792,10 @@
         padding-bottom: 30px; 
       }
 
-      /* Compact mobile bells scaled to header */
-      .bell-wrapper:nth-child(1) .bell-thread,
-      .bell-wrapper:nth-child(7) .bell-thread { height: 12px; }
-      .bell-wrapper:nth-child(2) .bell-thread,
-      .bell-wrapper:nth-child(6) .bell-thread { height: 24px; }
-      .bell-wrapper:nth-child(3) .bell-thread,
-      .bell-wrapper:nth-child(5) .bell-thread { height: 18px; }
-      .bell-wrapper:nth-child(4) .bell-thread { height: 30px; }
-      
-      .bell-icon { font-size: 11px; }
+      .hero-toran { top: 35px; }
+
+      .flower-string .flower { font-size: 8px; }
+      .bell-icon { font-size: 12px; }
 
       .ganesha-wrapper { margin-bottom: 8px; }
 
@@ -821,7 +817,7 @@
 
 <body>
 
-<!-- WELCOME OVERLAY FOR AUTOPLAY SUCCESS -->
+<!-- WELCOME OVERLAY -->
 <div id="welcome-modal">
   <div class="modal-card">
    <p>With great pleasure,</p>
@@ -849,7 +845,7 @@
   <div class="petal">✨</div>
 </div>
 
-<!-- NAVIGATION & TORAN HEADER -->
+<!-- CLEAN FIXED NAVIGATION BAR -->
 <header>
   <nav>
     <ul>
@@ -860,23 +856,88 @@
       <li><a href="#rsvp">RSVP</a></li>
     </ul>
   </nav>
-  
-  <!-- DECORATIVE TORAN BANNER & ANCHORED BELLS -->
-  <div class="header-toran">
-    <div class="header-bells-container">
-      <div class="bell-wrapper"><div class="bell-thread"></div><div class="bell-icon">🔔</div></div>
-      <div class="bell-wrapper"><div class="bell-thread"></div><div class="bell-icon">🔔</div></div>
-      <div class="bell-wrapper"><div class="bell-thread"></div><div class="bell-icon">🔔</div></div>
-      <div class="bell-wrapper"><div class="bell-thread"></div><div class="bell-icon">🔔</div></div>
-      <div class="bell-wrapper"><div class="bell-thread"></div><div class="bell-icon">🔔</div></div>
-      <div class="bell-wrapper"><div class="bell-thread"></div><div class="bell-icon">🔔</div></div>
-      <div class="bell-wrapper"><div class="bell-thread"></div><div class="bell-icon">🔔</div></div>
-    </div>
-  </div>
 </header>
 
-<!-- HERO SECTION -->
+<!-- HERO SECTION (PAGE 1) WITH MARIGOLD FLOWER BELL STRINGS -->
 <section class="hero" id="home">
+
+  <div class="hero-toran">
+    <div class="hero-bells-container">
+
+      <!-- GARLAND 1 -->
+      <div class="bell-wrapper">
+        <div class="flower-string">
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+        </div>
+        <div class="bell-icon">🔔</div>
+      </div>
+
+      <!-- GARLAND 2 -->
+      <div class="bell-wrapper">
+        <div class="flower-string">
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+        </div>
+        <div class="bell-icon">🔔</div>
+      </div>
+
+      <!-- GARLAND 3 -->
+      <div class="bell-wrapper">
+        <div class="flower-string">
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+        </div>
+        <div class="bell-icon">🔔</div>
+      </div>
+
+      <!-- GARLAND 4 -->
+      <div class="bell-wrapper">
+        <div class="flower-string">
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+        </div>
+        <div class="bell-icon">🔔</div>
+      </div>
+
+      <!-- GARLAND 5 -->
+      <div class="bell-wrapper">
+        <div class="flower-string">
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+        </div>
+        <div class="bell-icon">🔔</div>
+      </div>
+
+      <!-- GARLAND 6 -->
+      <div class="bell-wrapper">
+        <div class="flower-string">
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+        </div>
+        <div class="bell-icon">🔔</div>
+      </div>
+
+      <!-- GARLAND 7 -->
+      <div class="bell-wrapper">
+        <div class="flower-string">
+          <span class="flower">🌼</span>
+          <span class="flower">🌼</span>
+        </div>
+        <div class="bell-icon">🔔</div>
+      </div>
+
+    </div>
+  </div>
 
   <div class="hero-content">
     <div class="ganesha-wrapper">
