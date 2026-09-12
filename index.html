@@ -107,7 +107,7 @@
     }
 
     /* =========================
-       HERO SECTION HANGING TORAN (FIXED SPACING)
+       HERO SECTION HANGING TORAN
     ========================== */
     .hanging-wrapper {
       position: absolute;
@@ -218,7 +218,7 @@
     }
 
     /* =========================
-       HERO SECTION (FIXED MOBILE SPACING)
+       HERO SECTION (RESPONSIVE FIX)
     ========================== */
     .hero {
       min-height: 100vh;
@@ -226,7 +226,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 50px 0px 10px;
+      padding: 80px 20px 40px;
       position: relative;
       background:
         radial-gradient(circle at top left, rgba(246, 226, 215, 0.8), transparent 45%),
@@ -235,73 +235,64 @@
     }
 
     .hero-content {
+      width: 100%;
       max-width: 850px;
       position: relative;
       z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* LIGHTNING THREADS WITH BELLS (RESPONSIVE FIX) */
+    /* LIGHTNING THREADS WITH BELLS */
+    .lightning-threads {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 15px auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      z-index: 3;
+      padding: 0 10px;
+    }
+
+    .light-thread {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: swing 2.5s ease-in-out infinite alternate;
+      transform-origin: top center;
+    }
+
+    .light-thread:nth-child(even) { animation-duration: 3s; animation-delay: 0.3s; }
+    .light-thread:nth-child(3n) { animation-duration: 2.2s; animation-delay: 0.7s; }
+
+    .light-thread:nth-child(1) .thread-line,
+    .light-thread:nth-child(7) .thread-line { height: 18px; }
+    .light-thread:nth-child(2) .thread-line,
+    .light-thread:nth-child(6) .thread-line { height: 35px; }
+    .light-thread:nth-child(3) .thread-line,
+    .light-thread:nth-child(5) .thread-line { height: 25px; }
+    .light-thread:nth-child(4) .thread-line { height: 42px; }
+
+    .thread-line {
+      width: 1.5px;
+      background: linear-gradient(to bottom, transparent, var(--gold-glow), var(--gold));
+      box-shadow: 0 0 6px var(--gold-glow);
+    }
+
+    .thread-bell {
+      font-size: 14px;
+      margin-top: -2px;
+      filter: drop-shadow(0 0 4px var(--gold-glow));
+    }
+
     .ganesha-wrapper {
       position: relative;
       display: inline-block;
-      margin-top: 30px;
+      margin-top: 10px;
       margin-bottom: 15px;
     }
-
-   /* LIGHTNING THREADS WITH BELLS SPREAD ACROSS HEADER */
-.lightning-threads {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto 10px auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  z-index: 3;
-  padding: 0 10px;
-}
-
-.light-thread {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  animation: swing 2.5s ease-in-out infinite alternate;
-  transform-origin: top center;
-}
-
-/* Stagger swinging animations for natural effect */
-.light-thread:nth-child(even) {
-  animation-duration: 3s;
-  animation-delay: 0.3s;
-}
-
-.light-thread:nth-child(3n) {
-  animation-duration: 2.2s;
-  animation-delay: 0.7s;
-}
-
-/* Vary thread lengths for decorative look */
-.light-thread:nth-child(1) .thread-line,
-.light-thread:nth-child(7) .thread-line { height: 18px; }
-
-.light-thread:nth-child(2) .thread-line,
-.light-thread:nth-child(6) .thread-line { height: 35px; }
-
-.light-thread:nth-child(3) .thread-line,
-.light-thread:nth-child(5) .thread-line { height: 25px; }
-
-.light-thread:nth-child(4) .thread-line { height: 42px; }
-
-.thread-line {
-  width: 1.5px;
-  background: linear-gradient(to bottom, transparent, var(--gold-glow), var(--gold));
-  box-shadow: 0 0 6px var(--gold-glow);
-}
-
-.thread-bell {
-  font-size: 14px;
-  margin-top: -2px;
-  filter: drop-shadow(0 0 4px var(--gold-glow));
-}
 
     .ganesha-box {
       width: 90px;
@@ -502,13 +493,20 @@
       object-fit: contain; 
     }
 
-    .story-text {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 20px;
-      line-height: 1.8;
-      color: #3d2b1f;
-      font-weight: 600;
-    }
+.story-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(16px, 4.5vw, 22px); /* Dynamically shrinks text on small screens */
+  line-height: 1.6;
+  color: #3d2b1f;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Ensure poem lines wrap cleanly without awkward word breaks */
+.story-text span {
+  display: inline-block;
+  white-space: nowrap;
+}
 
     /* =========================
        CELEBRATIONS
@@ -545,13 +543,13 @@
 
     .event-name {
       font-family: "Playfair Display", serif;
-      font-size: 22px;
+      font-size: 30px;
       color: var(--maroon);
       margin-bottom: 8px;
     }
 
     .event-date {
-      font-size: 13px;
+      font-size: 16px;
       color: var(--text);
       margin-bottom: 4px;
     }
@@ -559,7 +557,7 @@
     .event-time {
       color: var(--dark-gold);
       font-weight: 600;
-      font-size: 13px;
+      font-size: 16px;
     }
 
     /* =========================
@@ -790,7 +788,9 @@
       opacity: 0.85;
     }
 
-    /* MOBILE BREAKPOINTS */
+    /* =========================
+       MOBILE BREAKPOINTS (FIXED)
+    ========================== */
     @media (max-width: 800px) {
       .events-grid { grid-template-columns: 1fr; }
       .venue-grid { grid-template-columns: 1fr; }
@@ -799,13 +799,46 @@
     }
 
     @media (max-width: 600px) {
-      nav ul { gap: 12px; overflow-x: auto; width: 100%; justify-content: flex-start; }
-      nav a { font-size: 10px; white-space: nowrap; }
-      section { padding: 50px 4%; }
-      .hero { padding-top: 50px; }
-      .ganesha-wrapper { margin-top: 15px; }
-      .lightning-threads { top: -35px; max-width: 260px; }
-      .thread-line { height: 16px; }
+      nav { padding: 10px 5px; }
+      nav ul { 
+        gap: 14px; 
+        width: 100%; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+      }
+      nav a { font-size: 11px; white-space: nowrap; }
+
+      section { padding: 40px 5%; }
+
+      .hero { 
+        min-height: auto; 
+        padding-top: 75px; 
+        padding-bottom: 30px; 
+      }
+
+      .lightning-threads { 
+        max-width: 100%; 
+        margin-bottom: 5px;
+      }
+      
+      .thread-line { height: 16px !important; }
+
+      .ganesha-wrapper { 
+        margin-top: 5px; 
+        margin-bottom: 10px; 
+      }
+
+      .ganesha-box {
+        width: 75px;
+        height: 75px;
+      }
+
+      .ganesh-mantra { font-size: 15px; margin-bottom: 10px; }
+      .invitation-text { font-size: 11px; margin-bottom: 12px; }
+      .names { font-size: 42px; }
+      .and { font-size: 22px; }
+      .wedding-date { font-size: 17px; margin-top: 12px; }
+
       .emoji-choices { grid-template-columns: 1fr; }
     }
   </style>
@@ -864,23 +897,23 @@
     <div class="string-item"><div class="decor-node">🌼</div><div class="decor-node">🔔</div></div>
   </div>
 
-<div class="hero-content">
-  <!-- LIGHTNING THREADS WITH BELLS SPREAD WIDE -->
-  <div class="lightning-threads">
-    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-    <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
-  </div>
-
-  <div class="ganesha-wrapper">
-    <div class="ganesha-box">
-      <img src="ganesha.jpg" alt="Lord Ganesha" />
+  <div class="hero-content">
+    <!-- LIGHTNING THREADS WITH BELLS -->
+    <div class="lightning-threads">
+      <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+      <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+      <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+      <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+      <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+      <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+      <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
     </div>
-  </div>
+
+    <div class="ganesha-wrapper">
+      <div class="ganesha-box">
+        <img src="ganesha.jpg" alt="Lord Ganesha" />
+      </div>
+    </div>
 
     <div class="ganesh-mantra">ॐ श्री गणेशाय नमः</div>
 
@@ -934,14 +967,14 @@
       <img src="mamta_amit2.jpg" alt="Mamta and Amit Photo">
     </div>
 
-    <div class="story-text-content">
-      <p class="story-text">
-        Eight years of friendship, a bond so true,<br/>
-        Two different cultures, a single view.<br/>
-        Hand in hand, our new journey starts,<br/>
-        Blessed by loved ones, two united hearts.
-      </p>
-    </div>
+<div class="story-text-content">
+  <p class="story-text">
+    <span>Eight years of friendship, a bond so true,</span><br/>
+    <span>Two different cultures, a single view.</span><br/>
+    <span>Hand in hand, our new journey starts,</span><br/>
+    <span>Blessed by loved ones, two united hearts.</span>
+  </p>
+</div>
   </div>
 </section>
 
@@ -1010,10 +1043,8 @@
 </section>
 
 <!-- RSVP SECTION WITH GOOGLE FORMS INTEGRATION -->
-<!-- Hidden Iframe to capture the submit target -->
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showConfirmation(); }"></iframe>
 
-<!-- RSVP SECTION WITH GOOGLE FORMS INTEGRATION -->
 <section class="rsvp" id="rsvp">
   <h2 class="section-title">RSVP</h2>
   <p class="section-subtitle">Your presence will make our celebration even more special.</p>
@@ -1031,7 +1062,6 @@
         <input type="text" id="guestName" name="guestName" class="form-control" placeholder="Enter your full name" required>
       </div>
 
-      <!-- ATTENDANCE RADIO BUTTONS -->
       <!-- ATTENDANCE RADIO BUTTONS -->
       <div class="form-group">
         <label>Will you join us?</label>
@@ -1111,6 +1141,22 @@
   setInterval(updateCountdown, 1000);
 
   /* RSVP Form State Handlers */
+  function toggleGuestField() {
+    const attendanceVal = document.querySelector('input[name="attendance"]:checked')?.value;
+    const guestGroup = document.getElementById("guestCountGroup");
+    const guestInput = document.getElementById("guestCount");
+
+    if (attendanceVal === "Sorry, I cannot attend.") {
+      guestGroup.style.display = "none";
+      guestInput.removeAttribute("required");
+      guestInput.value = "0";
+    } else {
+      guestGroup.style.display = "block";
+      guestInput.setAttribute("required", "required");
+      if (guestInput.value === "0") guestInput.value = "";
+    }
+  }
+
   function updateButtonState() {
     const btn = document.getElementById("submitBtn");
     btn.disabled = true;
@@ -1144,22 +1190,6 @@
     } else {
       audio.pause();
       audioBtn.innerHTML = "🎵";
-    }
-  }
-  
-  function toggleGuestField() {
-    const attendanceVal = document.querySelector('input[name="attendance"]:checked')?.value;
-    const guestGroup = document.getElementById("guestCountGroup");
-    const guestInput = document.getElementById("guestCount");
-
-    if (attendanceVal === "Sorry, I cannot attend.") {
-      guestGroup.style.display = "none";
-      guestInput.removeAttribute("required");
-      guestInput.value = "0"; // Sends '0' to your script instead of failing validation
-    } else {
-      guestGroup.style.display = "block";
-      guestInput.setAttribute("required", "required");
-      if (guestInput.value === "0") guestInput.value = "";
     }
   }
 </script>
