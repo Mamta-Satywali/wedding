@@ -44,14 +44,77 @@
     }
 
     /* =========================
-       HERO SECTION HANGING TORAN
+       WELCOME / ENTRY OVERLAY
+    ========================== */
+    #welcome-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(61, 52, 45, 0.92);
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--cream);
+      backdrop-filter: blur(8px);
+      padding: 20px;
+    }
+
+    .modal-card {
+      background: var(--cream);
+      color: var(--text);
+      padding: 35px 25px;
+      border-radius: 20px;
+      border: 2px solid var(--gold);
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    .modal-card h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      color: var(--maroon);
+      margin: 10px 0 6px;
+    }
+
+    .modal-card p {
+      font-size: 12px;
+      color: var(--dark-gold);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .enter-btn {
+      background: var(--maroon);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(124, 31, 37, 0.3);
+      transition: 0.3s;
+    }
+
+    .enter-btn:hover {
+      background: var(--green);
+    }
+
+    /* =========================
+       HERO SECTION HANGING TORAN (FIXED SPACING)
     ========================== */
     .hanging-wrapper {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100px;
+      height: 60px;
       pointer-events: none;
       z-index: 10;
       display: flex;
@@ -74,7 +137,7 @@
     }
 
     .decor-node {
-      font-size: 16px;
+      font-size: 14px;
       margin-top: -3px;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
     }
@@ -84,7 +147,7 @@
       100% { transform: rotate(4deg); }
     }
 
-    /* FLOATING PETALS (FIXED HORIZONTAL SCROLL) */
+    /* FLOATING PETALS */
     .petals-container {
       position: fixed;
       top: 0;
@@ -131,19 +194,19 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 14px 20px;
+      padding: 12px 20px;
     }
 
     nav ul {
       display: flex;
-      gap: 28px;
+      gap: 24px;
       list-style: none;
     }
 
     nav a {
       text-decoration: none;
       color: var(--text);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -155,7 +218,7 @@
     }
 
     /* =========================
-       HERO SECTION
+       HERO SECTION (FIXED MOBILE SPACING)
     ========================== */
     .hero {
       min-height: 100vh;
@@ -163,7 +226,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 120px 20px 60px;
+      padding: 90px 20px 40px;
       position: relative;
       background:
         radial-gradient(circle at top left, rgba(246, 226, 215, 0.8), transparent 45%),
@@ -177,19 +240,21 @@
       z-index: 2;
     }
 
-    /* LIGHTNING THREADS WITH BELLS ABOVE GANESHA */
+    /* LIGHTNING THREADS WITH BELLS (RESPONSIVE FIX) */
     .ganesha-wrapper {
       position: relative;
       display: inline-block;
+      margin-top: 30px;
       margin-bottom: 15px;
     }
 
     .lightning-threads {
       position: absolute;
-      top: -70px;
+      top: -45px;
       left: 50%;
       transform: translateX(-50%);
-      width: 500px;
+      width: 100%;
+      max-width: 320px;
       display: flex;
       justify-content: space-between;
       z-index: 3;
@@ -203,26 +268,24 @@
       transform-origin: top center;
     }
 
-    .light-thread:nth-child(2) {
-      animation-delay: 0.5s;
-    }
+    .light-thread:nth-child(2) { animation-delay: 0.5s; }
 
     .thread-line {
       width: 1.5px;
-      height: 30px;
+      height: 22px;
       background: linear-gradient(to bottom, transparent, var(--gold-glow), var(--gold));
       box-shadow: 0 0 6px var(--gold-glow);
     }
 
     .thread-bell {
-      font-size: 14px;
+      font-size: 12px;
       margin-top: -2px;
       filter: drop-shadow(0 0 4px var(--gold-glow));
     }
 
     .ganesha-box {
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
       margin: 0 auto;
       border-radius: 50%;
       padding: 4px;
@@ -239,8 +302,6 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      object-position: center;
-      display: block;
       mix-blend-mode: multiply; 
     }
 
@@ -250,64 +311,64 @@
     }
 
     .ganesh-mantra {
-      font-size: 20px;
+      font-size: 18px;
       color: var(--gold);
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       letter-spacing: 2px;
     }
 
     .invitation-text {
-      letter-spacing: 1.5px;
-      font-size: 13px;
+      letter-spacing: 1px;
+      font-size: 12px;
       color: var(--dark-gold);
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       text-transform: uppercase;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .names {
       font-family: "Playfair Display", serif;
       font-weight: 700;
-      font-size: clamp(40px, 7vw, 90px);
+      font-size: clamp(36px, 6vw, 80px);
       color: var(--maroon);
       line-height: 1.1;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       text-shadow: 2px 2px 10px rgba(124, 31, 37, 0.12);
     }
 
     .and {
       font-family: "Playfair Display", serif;
-      font-size: 32px;
+      font-size: 28px;
       color: var(--gold);
-      margin: 8px 0;
+      margin: 4px 0;
     }
 
     .wedding-date {
-      margin-top: 25px;
+      margin-top: 20px;
       font-family: "Playfair Display", serif;
-      font-size: 22px;
-      letter-spacing: 3px;
+      font-size: 20px;
+      letter-spacing: 2px;
       color: var(--text);
     }
 
     .wedding-time {
-      margin-top: 8px;
-      font-size: 14px;
+      margin-top: 6px;
+      font-size: 13px;
       letter-spacing: 2px;
       color: var(--maroon);
       font-weight: 600;
     }
 
     .venue-short {
-      margin-top: 25px;
-      font-size: 15px;
-      line-height: 1.8;
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .venue-short strong {
       color: var(--green);
-      font-size: 20px;
+      font-size: 18px;
       font-family: "Playfair Display", serif;
     }
 
@@ -315,7 +376,7 @@
        SECTION COMMON
     ========================== */
     section {
-      padding: 90px 8%;
+      padding: 70px 6%;
       position: relative;
       z-index: 2;
     }
@@ -323,18 +384,18 @@
     .section-title {
       text-align: center;
       font-family: "Playfair Display", serif;
-      font-size: 38px;
+      font-size: 32px;
       color: var(--maroon);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .section-subtitle {
       text-align: center;
       max-width: 600px;
-      margin: 0 auto 40px;
+      margin: 0 auto 35px;
       color: #76665b;
-      line-height: 1.7;
-      font-size: 18px;
+      line-height: 1.6;
+      font-size: 16px;
     }
 
     /* =========================
@@ -354,13 +415,13 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
+      gap: 10px;
+      margin-top: 25px;
     }
 
     .countdown-box {
-      width: 80px;
-      padding: 12px 4px;
+      width: 75px;
+      padding: 10px 4px;
       border: 1px solid rgba(245, 223, 181, 0.4);
       border-radius: 12px;
       background: rgba(255,255,255,0.06);
@@ -369,7 +430,7 @@
 
     .countdown-number {
       font-family: "Playfair Display", serif;
-      font-size: 28px;
+      font-size: 24px;
       color: #f5dfb5;
     }
 
@@ -377,12 +438,12 @@
       margin-top: 4px;
       text-transform: uppercase;
       font-size: 9px;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       opacity: 0.9;
     }
 
     /* =========================
-       VIBRANT OUR STORY SECTION
+       OUR STORY SECTION
     ========================== */
     .story {
       background: linear-gradient(180deg, var(--soft-cream) 0%, #fff8ec 100%);
@@ -393,10 +454,10 @@
       margin: auto;
       display: grid;
       grid-template-columns: 1fr 1.2fr;
-      gap: 35px;
+      gap: 30px;
       align-items: center;
       background: #ffffff;
-      padding: 35px;
+      padding: 30px;
       border-radius: 20px;
       border: 2px solid var(--gold);
       box-shadow: 0 12px 35px rgba(124, 31, 37, 0.12);
@@ -404,11 +465,10 @@
 
     .story-image-box {
       width: 100%;
-      max-height: 480px;
+      max-height: 400px;
       border-radius: 15px;
       overflow: hidden;
-      border: 4px solid var(--gold-glow);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border: 3px solid var(--gold-glow);
       background: #fdfaf5;
       display: flex;
       justify-content: center;
@@ -418,14 +478,13 @@
     .story-image-box img {
       width: 100%;
       height: 100%;
-      max-height: 480px;
+      max-height: 400px;
       object-fit: contain; 
-      display: block;
     }
 
     .story-text {
       font-family: "Cormorant Garamond", serif;
-      font-size: 22px;
+      font-size: 20px;
       line-height: 1.8;
       color: #3d2b1f;
       font-weight: 600;
@@ -439,12 +498,12 @@
       margin: auto;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
+      gap: 20px;
     }
 
     .event-card {
       background: white;
-      padding: 35px 20px;
+      padding: 30px 15px;
       text-align: center;
       border-radius: 15px;
       border: 1px solid rgba(184, 138, 59, 0.2);
@@ -453,39 +512,34 @@
     }
 
     .event-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-6px);
       box-shadow: 0 15px 30px rgba(124, 31, 37, 0.12);
       border-color: var(--gold);
     }
 
     .caricature-box {
-      font-size: 45px;
-      margin-bottom: 12px;
+      font-size: 40px;
+      margin-bottom: 10px;
       display: inline-block;
-      transition: transform 0.3s;
-    }
-
-    .event-card:hover .caricature-box {
-      transform: scale(1.15) rotate(5deg);
     }
 
     .event-name {
       font-family: "Playfair Display", serif;
-      font-size: 24px;
+      font-size: 22px;
       color: var(--maroon);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .event-date {
       font-size: 13px;
       color: var(--text);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .event-time {
       color: var(--dark-gold);
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     /* =========================
@@ -506,11 +560,11 @@
       margin: auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 25px;
+      gap: 20px;
     }
 
     .venue-card {
-      padding: 35px 25px;
+      padding: 30px 20px;
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 15px;
       background: rgba(255,255,255,0.08);
@@ -521,43 +575,43 @@
     }
 
     .venue-tag {
-      font-size: 13px;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       color: var(--gold-glow);
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .venue-name {
       font-family: "Playfair Display", serif;
-      font-size: 26px;
+      font-size: 24px;
       color: #f5dfb5;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .venue-address {
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.6;
       opacity: 0.9;
     }
 
     .map-button {
       display: inline-block;
-      margin-top: 20px;
-      padding: 10px 22px;
+      margin-top: 18px;
+      padding: 10px 20px;
       background: #f5dfb5;
       color: var(--green);
       border-radius: 30px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 12px;
       transition: 0.3s;
     }
 
     .map-button:hover {
       background: white;
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
 
     /* =========================
@@ -568,17 +622,17 @@
     }
 
     .rsvp-container {
-      max-width: 580px;
+      max-width: 550px;
       margin: auto;
       background: white;
-      padding: 40px;
+      padding: 35px 25px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.06);
       border: 1px solid rgba(184, 138, 59, 0.2);
     }
 
     .form-group {
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       text-align: left;
     }
 
@@ -591,18 +645,18 @@
 
     .form-control {
       width: 100%;
-      padding: 13px 16px;
+      padding: 12px 14px;
       border-radius: 10px;
       border: 1.5px solid #e0d6cb;
       font-family: "Poppins", sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       background: #faf7f2;
     }
 
     .emoji-choices {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
     }
 
     .emoji-card input[type="radio"] {
@@ -615,12 +669,13 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      padding: 15px;
+      padding: 12px;
       border: 2px solid #e0d6cb;
       border-radius: 12px;
       background: #faf7f2;
       transition: 0.3s;
       cursor: pointer;
+      font-size: 12px;
     }
 
     .emoji-card input[type="radio"]:checked + .card-btn {
@@ -631,12 +686,12 @@
 
     .submit-button {
       width: 100%;
-      padding: 15px;
+      padding: 14px;
       border: none;
       border-radius: 30px;
       background: var(--maroon);
       color: white;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
@@ -648,10 +703,12 @@
 
     #rsvp-response {
       text-align: center;
-      margin-top: 20px;
+      margin-top: 15px;
       font-weight: 600;
       color: var(--green);
       display: none;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     /* =========================
@@ -665,77 +722,70 @@
       background: var(--maroon);
       color: #f5dfb5;
       border: 2px solid var(--gold);
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 20px;
+      font-size: 18px;
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-      transition: transform 0.2s;
     }
 
-    .audio-btn:active {
-      transform: scale(0.9);
-    }
-
-    /* =========================
-       BLESSINGS & FOOTER
-    ========================== */
+    /* BLESSINGS & FOOTER */
     .blessings {
       text-align: center;
-      padding: 70px 20px;
+      padding: 60px 20px;
     }
 
     .blessings h3 {
       font-family: "Playfair Display", serif;
-      font-size: 26px;
+      font-size: 24px;
       color: var(--maroon);
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .parents {
       font-family: "Cormorant Garamond", serif;
-      font-size: 22px;
-      line-height: 1.7;
+      font-size: 20px;
+      line-height: 1.6;
     }
 
     footer {
       background: var(--maroon);
       color: white;
       text-align: center;
-      padding: 30px 20px;
+      padding: 25px 20px;
     }
 
     footer .footer-names {
       font-family: "Playfair Display", serif;
-      font-size: 32px;
-      margin-bottom: 8px;
+      font-size: 28px;
+      margin-bottom: 6px;
     }
 
     footer p {
-      font-size: 12px;
+      font-size: 11px;
       opacity: 0.85;
     }
 
-    /* =========================
-       MOBILE RESPONSIVENESS
-    ========================== */
+    /* MOBILE BREAKPOINTS */
     @media (max-width: 800px) {
       .events-grid { grid-template-columns: 1fr; }
       .venue-grid { grid-template-columns: 1fr; }
-      .story-card-wrapper { grid-template-columns: 1fr; }
-      .story-image-box { max-height: 380px; }
+      .story-card-wrapper { grid-template-columns: 1fr; text-align: center; }
+      .story-image-box { max-height: 320px; }
     }
 
     @media (max-width: 600px) {
-      nav ul { gap: 14px; overflow-x: auto; width: 100%; justify-content: flex-start; }
-      nav a { font-size: 11px; white-space: nowrap; }
-      .names { font-size: 38px; }
+      nav ul { gap: 12px; overflow-x: auto; width: 100%; justify-content: flex-start; }
+      nav a { font-size: 10px; white-space: nowrap; }
       section { padding: 50px 4%; }
-      .rsvp-container { padding: 25px 15px; }
+      .hero { padding-top: 70px; }
+      .ganesha-wrapper { margin-top: 15px; }
+      .lightning-threads { top: -35px; max-width: 260px; }
+      .thread-line { height: 16px; }
       .emoji-choices { grid-template-columns: 1fr; }
     }
   </style>
@@ -743,8 +793,19 @@
 
 <body>
 
-<!-- AUDIO ELEMENT (DEFAULT ON) -->
-<audio id="bgMusic" loop autoplay preload="auto">
+<!-- WELCOME OVERLAY FOR AUTOPLAY SUCCESS -->
+<div id="welcome-modal">
+  <div class="modal-card">
+   <p>With great pleasure,</p>
+    <h2>Mamta & Amit</h2>
+    <p>welcome you to their wedding celebrations</p>
+	 <div style="font-size: 32px;">🙏</div>
+    <button class="enter-btn" onclick="openInvitation()">Open Invitation ✉️</button>
+  </div>
+</div>
+
+<!-- AUDIO ELEMENT -->
+<audio id="bgMusic" loop preload="auto">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
@@ -781,33 +842,18 @@
     <div class="string-item"><div class="decor-node">🌼</div><div class="decor-node">🔔</div></div>
     <div class="string-item"><div class="decor-node">🌸</div><div class="decor-node">🔔</div></div>
     <div class="string-item"><div class="decor-node">🌼</div><div class="decor-node">🔔</div></div>
-    <div class="string-item"><div class="decor-node">🌸</div><div class="decor-node">🔔</div></div>
-    <div class="string-item"><div class="decor-node">🌼</div><div class="decor-node">🔔</div></div>
   </div>
 
   <div class="hero-content">
     <div class="ganesha-wrapper">
       <div class="lightning-threads">
-        <div class="light-thread">
-          <div class="thread-line"></div>
-          <div class="thread-bell">🔔</div>
-        </div>
-        <div class="light-thread">
-          <div class="thread-line"></div>
-          <div class="thread-bell">🔔</div>
-        </div>
-        <div class="light-thread">
-          <div class="thread-line"></div>
-          <div class="thread-bell">🔔</div>
-        </div>
-        <div class="light-thread">
-          <div class="thread-line"></div>
-          <div class="thread-bell">🔔</div>
-        </div>
-        <div class="light-thread">
-          <div class="thread-line"></div>
-          <div class="thread-bell">🔔</div>
-        </div>
+        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+		        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
+        <div class="light-thread"><div class="thread-line"></div><div class="thread-bell">🔔</div></div>
       </div>
       <div class="ganesha-box">
         <img src="ganesha.jpg" alt="Lord Ganesha" />
@@ -910,7 +956,6 @@
 <section class="venue" id="venue">
   <h2 class="section-title">The Venues</h2>
   <div class="venue-grid">
-    <!-- HALDI & MEHENDI VENUE -->
     <div class="venue-card">
       <div>
         <div class="venue-tag">Haldi & Mehendi Venue</div>
@@ -925,7 +970,6 @@
       </a>
     </div>
 
-    <!-- WEDDING VENUE -->
     <div class="venue-card">
       <div>
         <div class="venue-tag">Wedding Venue</div>
@@ -943,48 +987,57 @@
   </div>
 </section>
 
-<!-- RSVP SECTION -->
+<!-- RSVP SECTION WITH GOOGLE FORMS INTEGRATION -->
+<!-- Hidden Iframe to capture the submit target -->
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { showConfirmation(); }"></iframe>
+
+<!-- RSVP SECTION WITH GOOGLE FORMS INTEGRATION -->
 <section class="rsvp" id="rsvp">
   <h2 class="section-title">RSVP</h2>
   <p class="section-subtitle">Your presence will make our celebration even more special.</p>
 
   <div class="rsvp-container">
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){showRsvpConfirmation();}"></iframe>
+    <form id="rsvpForm" 
+          action="https://script.google.com/macros/s/AKfycbx5joLPmVjEoP-umu4VGXqA0B1SHEwtoxnSLH7x-lFkHf_Xrs-GXaVBkdujfucmGCEF/exec" 
+          method="POST" 
+          target="hidden_iframe" 
+          onsubmit="submitted=true; updateButtonState();">
 
-    <form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/formResponse" method="POST" target="hidden_iframe" id="rsvpForm" onsubmit="submitted=true;">
-
+      <!-- NAME FIELD -->
       <div class="form-group">
         <label for="guestName">Your Full Name</label>
-        <input type="text" id="guestName" name="entry.11111111" class="form-control" placeholder="Enter your full name" required>
+        <input type="text" id="guestName" name="guestName" class="form-control" placeholder="Enter your full name" required>
       </div>
 
+      <!-- ATTENDANCE RADIO BUTTONS -->
       <div class="form-group">
         <label>Will you join us?</label>
         <div class="emoji-choices">
           <label class="emoji-card">
-            <input type="radio" name="entry.22222222" value="Yes, I will be there!" required>
+            <input type="radio" name="attendance" value="Yes, I will be there!" required>
             <div class="card-btn">
-              <span style="font-size:28px;">😊</span>
+              <span style="font-size:24px;">😊</span>
               <span>Yes, I will be there!</span>
             </div>
           </label>
 
           <label class="emoji-card">
-            <input type="radio" name="entry.22222222" value="Sorry, I cannot attend">
+            <input type="radio" name="attendance" value="Sorry, I cannot attend.">
             <div class="card-btn">
-              <span style="font-size:28px;">😔</span>
-              <span>Sorry, I cannot attend</span>
+              <span style="font-size:24px;">😔</span>
+              <span>Sorry, I cannot attend.</span>
             </div>
           </label>
         </div>
       </div>
 
+      <!-- NUMBER OF GUESTS FIELD -->
       <div class="form-group">
         <label for="guestCount">Number of Guests</label>
-        <input type="text" id="guestCount" name="entry.33333333" class="form-control" placeholder="e.g. 2 adults, 1 child" required>
+        <input type="text" id="guestCount" name="guestCount" class="form-control" placeholder="e.g. 2 adults, 1 child" required>
       </div>
 
-      <button type="submit" class="submit-button">Send My RSVP ♥</button>
+      <button type="submit" id="submitBtn" class="submit-button">Send My RSVP ♥</button>
     </form>
 
     <div id="rsvp-response"></div>
@@ -1011,7 +1064,6 @@
 <!-- JAVASCRIPT -->
 <script>
   let submitted = false;
-
   const weddingDate = new Date("December 09, 2026 19:00:00").getTime();
 
   function updateCountdown() {
@@ -1035,26 +1087,31 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  function showRsvpConfirmation() {
+  /* RSVP Form State Handlers */
+  function updateButtonState() {
+    const btn = document.getElementById("submitBtn");
+    btn.disabled = true;
+    btn.innerText = "Submitting...";
+  }
+
+  function showConfirmation() {
     const form = document.getElementById("rsvpForm");
-    const responseBox = document.getElementById("rsvp-response");
     const name = document.getElementById("guestName").value;
-    
+    const responseBox = document.getElementById("rsvp-response");
+
     form.style.display = "none";
     responseBox.style.display = "block";
     responseBox.innerHTML = `🎉 Thank you, <strong>${name}</strong>! Your RSVP response has been submitted directly to our guest list. ♥`;
   }
 
-  /* Audio Handling with Autoplay Fallback */
+  /* Audio Handler */
   const audio = document.getElementById("bgMusic");
   const audioBtn = document.getElementById("audioToggle");
 
-  function playAudio() {
-    audio.play().then(() => {
-      audioBtn.innerHTML = "🔊";
-    }).catch(() => {
-      audioBtn.innerHTML = "🎵";
-    });
+  function openInvitation() {
+    document.getElementById("welcome-modal").style.display = "none";
+    audio.play();
+    audioBtn.innerHTML = "🔊";
   }
 
   function toggleAudio() {
@@ -1066,22 +1123,6 @@
       audioBtn.innerHTML = "🎵";
     }
   }
-
-  // Attempt play immediately on load
-  window.addEventListener('DOMContentLoaded', () => {
-    playAudio();
-  });
-
-  // Fallback: Start playing on first user gesture (touch, scroll, click)
-  const userInteractions = ['touchstart', 'scroll', 'click'];
-  userInteractions.forEach(event => {
-    document.addEventListener(event, function startAudioOnInteraction() {
-      if (audio.paused) {
-        playAudio();
-      }
-      userInteractions.forEach(e => document.removeEventListener(e, startAudioOnInteraction));
-    }, { once: true });
-  });
 </script>
 
 </body>
