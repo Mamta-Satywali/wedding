@@ -230,7 +230,6 @@
     .bell-wrapper:nth-child(even) { animation-duration: 3.2s; animation-delay: 0.3s; }
     .bell-wrapper:nth-child(3n) { animation-duration: 2.5s; animation-delay: 0.6s; }
 
-    /* FLOWER STRINGS REPLACING PLAIN THREADS */
     .flower-string {
       display: flex;
       flex-direction: column;
@@ -433,30 +432,14 @@
     /* =========================
        OUR STORY SECTION
     ========================== */
-    /* =========================
-       OUR STORY SECTION
-    ========================== */
-    /* =========================
-       OUR STORY SECTION (ENHANCED)
-    ========================== */
     .story {
       background: linear-gradient(180deg, var(--soft-cream) 0%, #fff8ec 100%);
       position: relative;
       overflow: hidden;
     }
 
-    .section-subtitle {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 15px;
-      color: #76665b;
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
     .subtitle-phrase {
       display: inline-block;
-      white-space: nowrap;
     }
 
     /* Heart Divider below Subtitle */
@@ -478,7 +461,7 @@
       background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
-    /* Aesthetic Floating Background Hearts */
+    /* Floating Background Hearts */
     .bg-heart {
       position: absolute;
       font-size: 22px;
@@ -501,6 +484,7 @@
     /* Main Story Box with Corner Accents */
     .story-card-wrapper {
       max-width: 850px;
+      width: 100%;
       margin: auto;
       display: grid;
       grid-template-columns: 1fr 1.2fr;
@@ -513,9 +497,10 @@
       box-shadow: 0 12px 35px rgba(124, 31, 37, 0.12);
       position: relative;
       z-index: 2;
+      box-sizing: border-box;
     }
 
-    /* Subtle Corner Motifs */
+    /* Corner Motifs */
     .story-card-wrapper::before {
       content: "💖";
       position: absolute;
@@ -534,7 +519,7 @@
       opacity: 0.4;
     }
 
-    /* Image Frame with Outer Decorative Ring */
+    /* Image Frame */
     .story-image-box {
       width: 100%;
       max-width: 340px;
@@ -546,6 +531,7 @@
       background: linear-gradient(135deg, var(--gold-glow), var(--gold));
       box-shadow: 0 10px 25px rgba(124, 31, 37, 0.18);
       position: relative;
+      box-sizing: border-box;
     }
 
     .story-image-box img {
@@ -561,6 +547,9 @@
     .story-text-content {
       position: relative;
       padding: 10px;
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     /* Soft glowing heart behind text */
@@ -585,20 +574,16 @@
       color: #3d2b1f;
       font-weight: 600;
       text-align: center;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
 
-    .story-text span {
-      display: inline-block;
-      white-space: nowrap;
+    .poem-line {
+      display: block;
+      margin-bottom: 6px;
     }
-.poem-line {
-  display: block; /* Acts like a <br>, starting on a fresh line */
-  margin-bottom: 4px;
-}
+
     /* =========================
-       CELEBRATIONS
-    ========================== */
-  /* =========================
        CELEBRATIONS
     ========================== */
     .events-grid {
@@ -904,8 +889,17 @@
     @media (max-width: 800px) {
       .events-grid { grid-template-columns: 1fr; }
       .venue-grid { grid-template-columns: 1fr; }
-      .story-card-wrapper { grid-template-columns: 1fr; text-align: center; }
-      .story-image-box { max-height: 320px; }
+      
+      .story-card-wrapper { 
+        grid-template-columns: 1fr; 
+        text-align: center;
+        padding: 25px 20px;
+      }
+      
+      .story-image-box { 
+        max-width: 280px; 
+        aspect-ratio: 3 / 4;
+      }
     }
 
     @media (max-width: 600px) {
@@ -918,7 +912,7 @@
       }
       nav a { font-size: 10px; white-space: nowrap; }
 
-      section { padding: 40px 5%; }
+      section { padding: 40px 4%; }
 
       .hero { 
         min-height: auto; 
@@ -945,6 +939,33 @@
       .wedding-date { font-size: 16px; margin-top: 10px; }
 
       .emoji-choices { grid-template-columns: 1fr; }
+
+      /* Robust Story Fixes for Mobile */
+      .story-card-wrapper {
+        padding: 20px 14px;
+        width: 100%;
+        gap: 20px;
+      }
+
+      .story-image-box {
+        width: 100%;
+        max-width: 240px;
+        aspect-ratio: 3 / 4;
+      }
+
+      .story-text-content {
+        padding: 0;
+        width: 100%;
+      }
+
+      .story-text {
+        font-size: 17px;
+        line-height: 1.5;
+      }
+
+      .poem-line {
+        margin-bottom: 4px;
+      }
     }
   </style>
 </head>
@@ -992,7 +1013,7 @@
   </nav>
 </header>
 
-<!-- HERO SECTION (PAGE 1) WITH MARIGOLD FLOWER BELL STRINGS -->
+<!-- HERO SECTION WITH FLOWER BELL STRINGS -->
 <section class="hero" id="home">
 
   <div class="hero-toran">
@@ -1123,7 +1144,6 @@
 </section>
 
 <!-- OUR STORY SECTION -->
-<!-- OUR STORY SECTION -->
 <section class="story" id="story">
   <!-- Background Floating Decorator Hearts -->
   <div class="bg-heart bg-heart-1">💖</div>
@@ -1149,17 +1169,16 @@
     </div>
 
     <div class="story-text-content">
-     <p class="story-text">
-  <span class="poem-line">Eight years of friendship, a bond so true,</span>
-  <span class="poem-line">Two different cultures, a single view.</span>
-  <span class="poem-line">Hand in hand, our new journey starts,</span>
-  <span class="poem-line">Blessed by loved ones, two united hearts.</span>
-</p>
+      <p class="story-text">
+        <span class="poem-line">Eight years of friendship, a bond so true,</span>
+        <span class="poem-line">Two different cultures, a single view.</span>
+        <span class="poem-line">Hand in hand, our new journey starts,</span>
+        <span class="poem-line">Blessed by loved ones, two united hearts.</span>
+      </p>
     </div>
   </div>
 </section>
 
-<!-- WEDDING CELEBRATIONS -->
 <!-- WEDDING CELEBRATIONS -->
 <section class="events" id="celebrations">
   <h2 class="section-title">Wedding Celebrations</h2>
