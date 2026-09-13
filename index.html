@@ -591,7 +591,10 @@
       display: inline-block;
       white-space: nowrap;
     }
-
+.poem-line {
+  display: block; /* Acts like a <br>, starting on a fresh line */
+  margin-bottom: 4px;
+}
     /* =========================
        CELEBRATIONS
     ========================== */
@@ -1146,12 +1149,12 @@
     </div>
 
     <div class="story-text-content">
-      <p class="story-text">
-        <span>Eight years of friendship,</span> <span>a bond so true,</span><br/>
-        <span>Two different cultures,</span> <span>a single view.</span><br/>
-        <span>Hand in hand,</span> <span>our new journey starts,</span><br/>
-        <span>Blessed by loved ones,</span> <span>two united hearts.</span>
-      </p>
+     <p class="story-text">
+  <span class="poem-line">Eight years of friendship, a bond so true,</span>
+  <span class="poem-line">Two different cultures, a single view.</span>
+  <span class="poem-line">Hand in hand, our new journey starts,</span>
+  <span class="poem-line">Blessed by loved ones, two united hearts.</span>
+</p>
     </div>
   </div>
 </section>
